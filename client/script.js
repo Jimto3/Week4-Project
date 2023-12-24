@@ -5,13 +5,15 @@ form.addEventListener("submit", async function (event) {
   let formData = new FormData(form);
   let formValues = Object.fromEntries(formData);
 
-  let msg = await fetch("http://localhost:8080/messages", {
+  let message_list = await fetch("http://localhost:8080/messages", {
     method: "POST",
     headers: {
       "content-type": "application/json",
     },
     body: JSON.stringify(formValues),
   });
-  json = await msg.json();
-  console.log(msg, json);
 });
+
+async function getDataBase() {
+  let data = await fetch("http://localhost:8080/messages", { method: "POST" });
+}
